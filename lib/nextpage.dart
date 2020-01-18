@@ -7,53 +7,41 @@ class NextPage extends StatefulWidget {
 }
 
 class _NextPageState extends State<NextPage> {
-  TextEditingController inputController = new TextEditingController();
-  var ty;
-
+  var ty = "";
+  TextEditingController textThing = new TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.black,
-        title: Text('Page 2'),
-      ),
       body: Column(
         children: <Widget>[
+          SizedBox(
+            height: 40,
+            width: 40,
+          ),
           TextField(
-            controller: inputController,
+            controller: textThing,
             //obscureText: false,
             textAlign: TextAlign.left,
             decoration: InputDecoration(
               border: InputBorder.none,
-              hintText: 'PLEASE ENTER TEXT',
-              hintStyle: TextStyle(color: Colors.grey),
+              hintText: 'Enter your name',
+              hintStyle: TextStyle(color: Colors.black26),
             ),
           ),
-          SizedBox(
-            height: 50,
-            width: 30,
-          ),
-          MaterialButton(
-            color: Colors.deepPurpleAccent,
-            child: Text(ty),
-            onPressed: () {
-              setState(() {
-                ty = inputController.text;
-              });
-            },
-          ),
           RaisedButton(
-            child: Text('search'),
             onPressed: () {
               Fluttertoast.showToast(
-                  msg: inputController.text,
+                  msg: textThing.text,
                   toastLength: Toast.LENGTH_SHORT,
                   gravity: ToastGravity.CENTER,
                   timeInSecForIos: 1,
-                  backgroundColor: Colors.red,
+                  backgroundColor: Colors.blueAccent,
                   textColor: Colors.white,
                   fontSize: 16.0);
             },
+            child: Text("Raised button!!!"),
+            color: Colors.blueAccent,
+            //    backgroundColor: Colors.white,
           )
         ],
       ),

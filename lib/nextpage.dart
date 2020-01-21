@@ -1,5 +1,7 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:workshop1/thirdPage.dart';
 
 class NextPage extends StatefulWidget {
   @override
@@ -8,6 +10,8 @@ class NextPage extends StatefulWidget {
 
 class _NextPageState extends State<NextPage> {
   var ty = "";
+  final _db = Firestore.instance.collection("test");
+
   TextEditingController textThing = new TextEditingController();
   @override
   Widget build(BuildContext context) {
@@ -30,19 +34,31 @@ class _NextPageState extends State<NextPage> {
           ),
           RaisedButton(
             onPressed: () {
+              _db.document().setData({"text": textThing.text});
+
               Fluttertoast.showToast(
                   msg: textThing.text,
                   toastLength: Toast.LENGTH_SHORT,
                   gravity: ToastGravity.CENTER,
                   timeInSecForIos: 1,
-                  backgroundColor: Colors.blueAccent,
+                  backgroundColor: Colors.brown,
                   textColor: Colors.white,
                   fontSize: 16.0);
             },
             child: Text("Raised button!!!"),
-            color: Colors.blueAccent,
+            color: Colors.brown,
             //    backgroundColor: Colors.white,
-          )
+          ),
+          MaterialButton(
+            color: Colors.blue,
+            child: Text(
+              "Page3",
+            ),
+            onPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => RetriveData()));
+            },
+          ),
         ],
       ),
     );

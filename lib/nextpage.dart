@@ -29,7 +29,7 @@ class _NextPageState extends State<NextPage> {
             decoration: InputDecoration(
               border: InputBorder.none,
               hintText: 'Enter your name',
-              hintStyle: TextStyle(color: Colors.black26),
+              hintStyle: TextStyle(color: Color(0xFF7E8BE8)),
             ),
           ),
           RaisedButton(
